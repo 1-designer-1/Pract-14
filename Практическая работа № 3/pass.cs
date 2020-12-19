@@ -15,6 +15,8 @@ namespace Практическая_работа___3
         public pass()
         {
             InitializeComponent();
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.SetToolTip(textBox1, "123");
         }
 
         private void button1_Click(object sender, EventArgs e) //Вход

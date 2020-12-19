@@ -28,7 +28,19 @@ namespace Практическая_работа___3
             toolTip1.SetToolTip(this.button4, "Жми");
             toolStripStatusLabel1.Text = "Размер таблицы " + dataGridView1.RowCount.ToString() + "x" + dataGridView1.ColumnCount.ToString();
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            pass pass = new pass();
+            pass.ShowDialog(this);
 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result;
+            result = MessageBox.Show("Вы желаете завершить работу с программой", "Выход из программы", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No) e.Cancel = true;
+        }
         /// <summary>
         /// Получает массив из таблицы
         /// </summary>
@@ -196,19 +208,6 @@ namespace Практическая_работа___3
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            pass pass = new pass();
-            pass.ShowDialog(this);
-
-        }
-
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult result;
-            result = MessageBox.Show("Вы желаете завершить работу с программой", "Выход из программы", MessageBoxButtons.YesNo);
-            if (result == DialogResult.No) e.Cancel = true;
-        }
+      
     }
 }
