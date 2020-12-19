@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LibMas;
 using Lib_11;
+using System.IO;
 
 namespace Практическая_работа___3
 {
     public partial class Form1 : Form
     {
-       
+
         Task1 Arry = new Task1();
         Class1 Job = new Class1();
         public Form1()
@@ -48,7 +49,7 @@ namespace Практическая_работа___3
             }
 
             return array;
-            
+
         }
 
         /// <summary>
@@ -83,7 +84,10 @@ namespace Практическая_работа___3
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+            DialogResult result;
+            result = MessageBox.Show("Вы хочите закрыть программу", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes) this.Close();
         }
 
         private void заполнитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -190,6 +194,21 @@ namespace Практическая_работа___3
                     Arry.SaveArray(GetArray(), save.FileName);
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            pass pass = new pass();
+            pass.ShowDialog(this);
+
+        }
+
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result;
+            result = MessageBox.Show("Вы желаете завершить работу с программой", "Выход из программы", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No) e.Cancel = true;
         }
     }
 }
