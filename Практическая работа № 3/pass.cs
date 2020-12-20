@@ -33,7 +33,7 @@ namespace Практическая_работа___3
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) // отмена
         {
             this.Owner.Close();
         }

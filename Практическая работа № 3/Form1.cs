@@ -32,11 +32,16 @@ namespace Практическая_работа___3
         {
             pass pass = new pass();
             pass.ShowDialog(this);
-
+            ColumnRows.Open();
+            dataGridView1.ColumnCount = ColumnRows.Col;
+            dataGridView1.RowCount = ColumnRows.Row;
+            numericUpDown1.Value = ColumnRows.Row;
+            numericUpDown2.Value = ColumnRows.Col;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ColumnRows.Save();
             DialogResult result;
             result = MessageBox.Show("Вы желаете завершить работу с программой", "Выход из программы", MessageBoxButtons.YesNo);
             if (result == DialogResult.No) e.Cancel = true;
@@ -96,10 +101,7 @@ namespace Практическая_работа___3
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            DialogResult result;
-            result = MessageBox.Show("Вы хочите закрыть программу", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes) this.Close();
+             this.Close();
         }
 
         private void заполнитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -208,6 +210,13 @@ namespace Практическая_работа___3
             }
         }
 
-      
+        private void toolStripButton2_Click(object sender, EventArgs e) // Настройка таблицы
+        {
+            setting setting = new setting();
+            setting.ShowDialog();
+            dataGridView1.ColumnCount = ColumnRows.Col;
+            dataGridView1.RowCount = ColumnRows.Row;
+
+        }
     }
 }
